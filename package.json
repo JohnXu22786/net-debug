@@ -2,6 +2,14 @@
   "name": "dsh-http-debug",
   "version": "1.0.0",
   "description": "HTTP network debugging toolset for DeepSeek Harness (dsh): a general-purpose HTTP client with SSRF/private-network protection, per-session request history with replay, response inspection, and a zero-dependency CLI.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnXu22786/net-debug.git"
+  },
+  "homepage": "https://github.com/JohnXu22786/net-debug#readme",
+  "bugs": {
+    "url": "https://github.com/JohnXu22786/net-debug/issues"
+  },
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
@@ -42,8 +50,7 @@
     "network",
     "debugging",
     "web"
-  ],
-  "peerDependencies": {
+  ],  "peerDependencies": {
     "@deepseek-ai/cordis": ">=4",
     "@deepseek-ai/dsh-tools": ">=0.0.1-rc.1"
   },
@@ -58,7 +65,7 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "pretest": "npm run build",
-    "test": "node --test test/*.test.ts",
+    "test": "node --import tsx --test test/*.test.ts",
     "cli": "tsx src/cli.ts",
     "generate-examples": "node examples/generate-examples.mjs",
     "prepublishOnly": "npm run build"

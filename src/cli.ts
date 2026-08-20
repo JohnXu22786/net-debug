@@ -12,7 +12,8 @@
  *     -H 'content-type: application/json'
  *   dsh-http-debug https://example.com/file.bin --raw --max-body-bytes 1024
  */
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 import { HttpDebug, type ToolRequestInput } from './service.js';
 import { HttpDebugError, type HttpDebugConfig, type HttpResponse } from './types.js';
 import { buildHarLog } from './har.js';
@@ -246,6 +247,7 @@ async function runCli(argv: string[]): Promise<number> {
       { durationMs: result.durationMs },
     );
     try {
+      await mkdir(dirname(resolve(opts.harFile)), { recursive: true });
       await writeFile(opts.harFile, JSON.stringify(har, null, 2), 'utf8');
     } catch (error) {
       process.stderr.write(`error: cannot write HAR file: ${(error as Error).message}\n`);

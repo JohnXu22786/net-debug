@@ -1,6 +1,10 @@
 # dsh-http-debug
 
+[![CI](https://github.com/JohnXu22786/net-debug/actions/workflows/ci.yml/badge.svg)](https://github.com/JohnXu22786/net-debug/actions/workflows/ci.yml)
+
 HTTP network debugging toolset for DeepSeek Harness (`dsh`).
+
+> **中文文档：[README.zh.md](README.zh.md)**
 
 `dsh-http-debug` is a **bundle** (a distributable plugin) that adds a general-purpose
 HTTP client to dsh — with **SSRF / private-network protection**, per-session
@@ -81,6 +85,12 @@ forwards to the package manager inside the profile directory:
 
 ```sh
 dsh plugin --profile <name> add dsh-http-debug
+```
+
+or straight from this repository:
+
+```sh
+dsh plugin --profile <name> add github:JohnXu22786/net-debug
 ```
 
 (The profile is auto-initialized from its shipped template on first use; a
@@ -311,6 +321,19 @@ A successful exchange returns an object like:
 `INVALID_URL` · `UNSUPPORTED_PROTOCOL` · `SSRF_BLOCKED` · `DNS_FAILED` ·
 `TIMEOUT` · `ABORTED` · `NETWORK_ERROR` · `TOO_MANY_REDIRECTS` ·
 `HISTORY_NOT_FOUND` · `INVALID_RULE` · `INVALID_BODY`
+
+### CLI exit codes
+
+The CLI maps results and failures onto a small, stable set of process exit
+codes, so it can be composed in scripts:
+
+- `0` — the exchange completed (any HTTP status, including 4xx/5xx, is a
+  completed exchange).
+- `2` — usage error: bad flags, an invalid `--rule`, an `INVALID_URL`, or an
+  `UNSUPPORTED_PROTOCOL`.
+- `3` — the request was refused or failed: `SSRF_BLOCKED`, `DNS_FAILED`,
+  `TIMEOUT`, `TOO_MANY_REDIRECTS`, `NETWORK_ERROR`, or the HAR file could not
+  be written.
 
 ---
 

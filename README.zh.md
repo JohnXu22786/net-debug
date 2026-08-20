@@ -2,6 +2,8 @@
 
 面向 DeepSeek Harness（`dsh`）的 HTTP 网络调试工具集。
 
+> **English documentation: [README.md](README.md)**
+
 `dsh-http-debug` 是一个 **bundle**（可分发插件），为 dsh 提供通用 HTTP 客户端 ——
 内置 **SSRF / 私网防护**、会话内 **请求历史与重放**、响应**检查**能力，以及零依赖的
 **CLI**。它刻意聚焦于**原始 HTTP 语义**（方法、头、体、状态、耗时、大小），而不是页面抽取：
@@ -71,6 +73,12 @@ dsh 通过 `dsh plugin` 管理 profile 的外部插件，它会在 profile 目�
 
 ```sh
 dsh plugin --profile <name> add dsh-http-debug
+```
+
+或直接从本仓库安装：
+
+```sh
+dsh plugin --profile <name> add github:JohnXu22786/net-debug
 ```
 
 （profile 首次使用时会按内置模板自动初始化；自定义名字需先用 `dsh plugin` 创建。）

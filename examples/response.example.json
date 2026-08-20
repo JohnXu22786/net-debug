@@ -1,0 +1,116 @@
+{
+  "ok": true,
+  "status": 200,
+  "statusText": "OK",
+  "httpVersion": "HTTP/1.x",
+  "method": "GET",
+  "url": "http://127.0.0.1:12625/items",
+  "headers": {
+    "connection": "close",
+    "content-type": "application/json",
+    "date": "Wed, 19 Aug 2026 12:19:21 GMT",
+    "transfer-encoding": "chunked",
+    "x-demo": "v1"
+  },
+  "contentType": "application/json",
+  "body": "{\"items\":[{\"id\":1,\"name\":\"tea\"},{\"id\":2,\"name\":\"sugar\"}]}",
+  "bodyEncoding": "utf8",
+  "bodySizeBytes": 57,
+  "bodyTruncated": false,
+  "durationMs": 35,
+  "redirected": false,
+  "redirects": [],
+  "historyId": "h1",
+  "json": {
+    "valid": true
+  },
+  "har": {
+    "log": {
+      "version": "1.2",
+      "creator": {
+        "name": "dsh-http-debug",
+        "version": "1.0.0"
+      },
+      "entries": [
+        {
+          "startedDateTime": "2026-08-19T12:19:21.916Z",
+          "time": 35,
+          "request": {
+            "method": "GET",
+            "url": "http://127.0.0.1:12625/items",
+            "httpVersion": "HTTP/1.1",
+            "cookies": [],
+            "headers": [
+              {
+                "name": "connection",
+                "value": "close"
+              },
+              {
+                "name": "content-type",
+                "value": "application/json"
+              },
+              {
+                "name": "date",
+                "value": "Wed, 19 Aug 2026 12:19:21 GMT"
+              },
+              {
+                "name": "transfer-encoding",
+                "value": "chunked"
+              },
+              {
+                "name": "x-demo",
+                "value": "v1"
+              }
+            ],
+            "queryString": [],
+            "headersSize": -1,
+            "bodySize": 0
+          },
+          "response": {
+            "status": 200,
+            "statusText": "OK",
+            "httpVersion": "HTTP/1.1",
+            "cookies": [],
+            "headers": [
+              {
+                "name": "connection",
+                "value": "close"
+              },
+              {
+                "name": "content-type",
+                "value": "application/json"
+              },
+              {
+                "name": "date",
+                "value": "Wed, 19 Aug 2026 12:19:21 GMT"
+              },
+              {
+                "name": "transfer-encoding",
+                "value": "chunked"
+              },
+              {
+                "name": "x-demo",
+                "value": "v1"
+              }
+            ],
+            "content": {
+              "size": 57,
+              "compression": 0,
+              "mimeType": "application/json",
+              "text": "{\"items\":[{\"id\":1,\"name\":\"tea\"},{\"id\":2,\"name\":\"sugar\"}]}"
+            },
+            "redirectURL": "",
+            "headersSize": -1,
+            "bodySize": 57
+          },
+          "cache": {},
+          "timings": {
+            "send": 0,
+            "wait": 35,
+            "receive": 0
+          }
+        }
+      ]
+    }
+  }
+}

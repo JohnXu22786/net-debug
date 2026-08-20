@@ -1,0 +1,66 @@
+{
+  "name": "dsh-http-debug",
+  "version": "1.0.0",
+  "description": "HTTP network debugging toolset for DeepSeek Harness (dsh): a general-purpose HTTP client with SSRF/private-network protection, per-session request history with replay, response inspection, and a zero-dependency CLI.",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "dsh-http-debug": "lib/cli.js"
+  },
+  "files": [
+    "lib",
+    "examples",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "http",
+    "http-client",
+    "ssrf",
+    "network",
+    "debugging",
+    "web"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4",
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-tools": "0.0.1-rc.1",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pretest": "npm run build",
+    "test": "node --test test/*.test.ts",
+    "cli": "tsx src/cli.ts",
+    "generate-examples": "node examples/generate-examples.mjs",
+    "prepublishOnly": "npm run build"
+  }
+}

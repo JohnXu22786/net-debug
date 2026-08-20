@@ -1,0 +1,48 @@
+# dsh-http-debug — DeepSeek Harness bundle patch.
+#
+# A *bundle* is an npm package that announces itself under a `dsh` field in its
+# package.json (`dsh.bundle.patch`) and ships a `cordis.patch.yml` (this file).
+# When a profile lists this bundle and the Loader applies this patch, the row
+# below mounts the plugin by its bare package name (`name`).
+#
+# The plugin registers three model-facing tools on `ctx.tools`:
+#   - http_request   perform (or replay) an HTTP exchange
+#   - http_history   list / inspect / clear session request history
+#   - http_rules     inspect / edit the effective SSRF whitelist
+#
+# Configuration is entirely optional: every field below defaults in code and is
+# safe to leave unset. To tune it for ONE profile, override this row in the
+# profile's own cordis.patch.yml (a patch replaces the whole `config` block,
+# so repeat every field you keep):
+#
+#   - insert:
+#     - id: http-debug
+#       name: 'dsh-http-debug'
+#       config:
+#         ssrf:
+#           enabled: true
+#           blockPrivate: true
+#           blockLoopback: true
+#           blockLinkLocal: true
+#           blockReserved: true
+#           whitelist:
+#             - 'localhost'
+#             - '127.0.0.1'
+#             - '10.42.0.0/16'
+#             - '*.corp.example.com'
+#         client:
+#           timeoutMs: 30000
+#           maxRedirects: 10
+#           maxBodyBytes: 131072
+#           wafHeaders: true
+#           userAgent: 'Mozilla/5.0 (compatible; dsh-http-debug/1.0.0)'
+#           referer: ''
+#         history:
+#           maxEntries: 200
+#         har:
+#           enabled: false
+#
+# See README.md for the full reference.
+- insert:
+  - id: http-debug
+    name: 'dsh-http-debug'
